@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Identity.Web;
 using Net6AdoNetAPIIBMMq;
+using Net6AdoNetAPIIBMMq.Repo;
 
 var builder = WebApplication.CreateBuilder(args);
 //https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-6.0
@@ -23,6 +24,7 @@ builder.Services.Configure<HealthCheckPublisherOptions>(options =>
 });
 
 builder.Services.AddSingleton<IHealthCheckPublisher, HealthCheckPublisher>();
+builder.Services.AddSingleton<ISqlRepo, SqlRepo>();
 
 
 // Add services to the container.
